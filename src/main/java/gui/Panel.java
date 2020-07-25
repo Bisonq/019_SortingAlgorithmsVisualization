@@ -1,5 +1,6 @@
 package gui;
 
+import algorithms.SelectionSort;
 import core.Element;
 import core.ElementsFactory;
 
@@ -10,24 +11,33 @@ import java.util.List;
 
 public class Panel extends JPanel {
 
+    private List<Element> elements;
+
     public Panel() {
         super();
         setLocation(50, 0);
         setSize(685, 300);
         setBackground(new Color(166, 166, 120));
+
+        elements = new ArrayList<>();
+        generateElements(elements);
+
+        JLabel label = new JLabel("iteration: " + 0);
+
+        add(new SelectionSort(elements, this, label));
+        add(label);
     }
 
+    private int i = 1;
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
-        paintNumbers(g2d);
+
+        paintNumbers(g2d, elements);
     }
 
-    public void paintNumbers(Graphics2D g) {
-
-        List<Element> elements = new ArrayList<>();
-        generateElements(elements);
+    public void paintNumbers(Graphics2D g, List<Element> elements) {
 
         int fontSize = 18;
         g.setFont(new Font(Font.DIALOG, Font.BOLD, fontSize));
