@@ -9,8 +9,8 @@ public class ElementsFactory {
     private ElementsFactory() {
     }
 
-    public static Element createElement() {
+    public static Element createElement(int id) {
 
-        return new Element(random.nextInt(101) - 50);
+        return new Element(random.nextInt(101) - 50, id);
     }
 }

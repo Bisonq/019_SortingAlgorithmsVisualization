@@ -29,11 +29,12 @@ public class SelectionSort extends JButton implements ActionListener {
 
     public void selectionSort(){
 
-        if(!sorted) {
+        if(panel.isElementsGenerated() && !panel.isWorking()) {
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
+                    panel.setWorking(true);
                     int i = 0;
                     int min;
                     while (i < elements.size()) {
@@ -48,9 +49,10 @@ public class SelectionSort extends JButton implements ActionListener {
                             e.printStackTrace();
                         }
                     }
+                    panel.setWorking(false);
+                    panel.setElementsGenerated(false);
                 }
             }, 1000);
-            sorted = true;
         }
     }
 

@@ -1,31 +1,33 @@
 package gui;
 
-import algorithms.SelectionSort;
 import core.Element;
 import core.ElementsFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Panel extends JPanel {
+public class Panel extends JPanel implements ActionListener {
 
     private List<Element> elements;
+    private boolean elementsGenerated = false;
+    private boolean isWorking = false;
 
     public Panel() {
         super();
         setLocation(50, 0);
-        setSize(685, 300);
+        setSize(685, 250);
         setBackground(new Color(166, 166, 120));
 
         elements = new ArrayList<>();
-        generateElements(elements);
 
-        JLabel label = new JLabel("iteration: " + 0);
+        JButton generateElements = new JButton("Generate elements");
+        generateElements.addActionListener(this);
 
-        add(new SelectionSort(elements, this, label));
-        add(label);
+        add(generateElements);
     }
 
     private int i = 1;
@@ -48,8 +50,38 @@ public class Panel extends JPanel {
         }
     }
 
-    private void generateElements(List<Element> elements) {
+    private void generateElements() {
+        elements.clear();
         for (int i = 0; i < 12; i++)
-            elements.add(ElementsFactory.createElement());
+            elements.add(ElementsFactory.createElement(i));
+    }
+
+    public List<Element> getElements() {
+        return elements;
+    }
+
+    public boolean isElementsGenerated() {
+        return elementsGenerated;
+    }
+
+    public void setElementsGenerated(boolean elementsGenerated) {
+        this.elementsGenerated = elementsGenerated;
+    }
+
+    public boolean isWorking() {
+        return isWorking;
+    }
+
+    public void setWorking(boolean working) {
+        isWorking = working;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(!elementsGenerated) {
+            generateElements();
+            elementsGenerated = true;
+            repaint();
+        }
     }
 }

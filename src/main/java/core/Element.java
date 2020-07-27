@@ -2,7 +2,6 @@ package core;
 
 public class Element {
 
-    private static int globalId = 0;
     private int value;
     private final int id;
     private final int xLocation;
@@ -10,9 +9,9 @@ public class Element {
     private final int radius;
     private final int space = 40;
 
-    public Element(int value) {
+    public Element(int value, int id) {
         this.value = value;
-        this.id = globalId++;
+        this.id = id;
         this.radius = 50;
         this.xLocation = space + radius * id;
         this.yLocation = 130;

@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Frame extends JFrame {
 
-    public Frame(Panel panel) {
+    public Frame(Panel panel, OperationPanel operationPanel) {
         super();
         setTitle("AlgorithmsVisualization");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -15,6 +15,7 @@ public class Frame extends JFrame {
         setLocation(100, 100);
         setResizable(false);
         add(panel);
+        add(operationPanel);
         setVisible(true);
     }
 }
