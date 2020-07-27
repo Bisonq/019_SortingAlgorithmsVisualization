@@ -31,17 +31,18 @@ public class InsertionSort extends JButton implements ActionListener {
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                for(int next = 1; next < elements.size() ; next ++) {
+                    panel.setWorking(true);
+                    for(int next = 1; next < elements.size() ; next ++) {
 
-                    int curr = next;
-                    int tmp = elements.get(next).getValue();
+                        int curr = next;
+                        int tmp = elements.get(next).getValue();
 
-                    while((curr > 0) && (tmp < elements.get(curr - 1).getValue())) {
+                        while((curr > 0) && (tmp < elements.get(curr - 1).getValue())) {
 
-                        elements.get(curr).setValue(elements.get(curr-1).getValue());
-                        curr--;
+                            elements.get(curr).setValue(elements.get(curr-1).getValue());
+                            curr--;
 
-                    }
+                        }
                     elements.get(curr).setValue(tmp);
 
                     label.setText("iteration: " + (next));
@@ -55,7 +56,7 @@ public class InsertionSort extends JButton implements ActionListener {
                 panel.setWorking(false);
                 panel.setElementsGenerated(false);
                 }
-            }, 1000);
+            }, 0);
         }
     }
 

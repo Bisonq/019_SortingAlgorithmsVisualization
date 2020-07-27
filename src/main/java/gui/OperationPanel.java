@@ -15,10 +15,9 @@ public class OperationPanel extends JPanel {
         setBackground(new Color(0, 166, 166));
         setLayout(new GridLayout(2,2));
 
-        JLabel selectionSortlabel = new JLabel("iteration: " + 0);
-
-        add(new SelectionSort(panel.getElements(), panel, selectionSortlabel));
-        add(selectionSortlabel);
+        JLabel selectionSortLabel = new JLabel("iteration: " + 0);
+        add(new SelectionSort(panel.getElements(), panel, selectionSortLabel));
+        add(selectionSortLabel);
 
         JLabel insertionSortLabel = new JLabel("iteration " + 0);
         add(new InsertionSort(panel.getElements(), panel, insertionSortLabel));

@@ -52,7 +52,7 @@ public class SelectionSort extends JButton implements ActionListener {
                     panel.setWorking(false);
                     panel.setElementsGenerated(false);
                 }
-            }, 1000);
+            }, 0);
         }
     }
 
